@@ -28,6 +28,6 @@
       "matchDatasources": ["docker"],
       "matchDepNames": ["code.forgejo.org/**"],
       "replacementNameTemplate": "{{{replace 'code\\.forgejo\\.org/' 'data.forgejo.org/' depName}}}"
-    },
+    }
   ]
 }
