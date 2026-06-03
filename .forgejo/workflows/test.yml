@@ -1,0 +1,14 @@
+name: test
+
+on:
+  pull_request:
+
+jobs:
+  sync:
+    runs-on: docker
+    container:
+      image: 'code.forgejo.org/oci/ci:1'
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v4
+      
+      - uses: actions/checkout@v4
