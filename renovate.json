@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "partial default base preset for Forgejo repos",
+  "extends": [
+    "config:best-practices"
+  ],
+  "ignorePresets": [
+    ":semanticPrefixFixDepsChoreOthers",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "packageRules": [
+    {
+      "description": "Pin github actions to full semver",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["action"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "replace some actions with data.forgejo.org actions",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["action"],
+      "matchDepNames": ["http://code.forgejo.org/**", "https://github.com/**"],
+      "replacementNameTemplate": "https://data.forgejo.org/{{{packageName}}}"
+    },
+    {
+      "description": "replace code.forgejo.org oci images with data.forgejo.org oci images",
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["code.forgejo.org/**"],
+      "replacementNameTemplate": "{{{replace 'code\\.forgejo\\.org/' 'data.forgejo.org/' depName}}}"
+    },
+  ]
+}
