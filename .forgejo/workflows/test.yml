@@ -7,7 +7,7 @@ jobs:
   sync:
     runs-on: docker
     container:
-      image: 'code.forgejo.org/oci/ci:1'
+      image: 'code.forgejo.org/oci/ci:2'
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v4
       
